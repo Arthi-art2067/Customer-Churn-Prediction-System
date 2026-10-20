@@ -131,3 +131,16 @@ These are application-defined probability thresholds, not guaranteed measures of
 
 ```bash
 pip install -r requirements.txt
+```
+
+### Step 2: Run the Application
+
+```bash
+streamlit run app.py
+```
+
+### Step 3: Run Tests
+
+```bash
+python -m unittest test_project.py -v
+```
