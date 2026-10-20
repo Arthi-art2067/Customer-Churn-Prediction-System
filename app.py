@@ -48,7 +48,9 @@ try:
         customer = X.iloc[[int(customer_index)]]
 
         prediction = model.predict(customer)[0]
-        probability = model.predict_proba(customer)[0][1]
+        probabilities = model.predict_proba(customer)[0]
+        churn_class_index = list(model.classes_).index(1)
+        probability = probabilities[churn_class_index]
 
         if prediction == 1:
             st.warning("Prediction: Customer may leave the bank.")
@@ -56,6 +58,17 @@ try:
             st.success("Prediction: Customer is likely to stay.")
 
         st.metric("Churn Probability", f"{probability:.2%}")
+        if probability < 0.30:
+            risk_level = "Low Risk"
+            st.success(f"Churn Risk Level: {risk_level}")
+
+        elif probability < 0.60:
+            risk_level = "Medium Risk"
+            st.warning(f"Churn Risk Level: {risk_level}")
+
+        else:
+            risk_level = "High Risk"
+            st.error(f"Churn Risk Level: {risk_level}")
 
     # Download dataset
     st.subheader("Download Dataset")
