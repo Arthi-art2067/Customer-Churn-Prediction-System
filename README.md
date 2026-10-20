@@ -1,95 +1,133 @@
 # Customer Churn Prediction System
 
 ## 1. Project Overview
-The Customer Churn Prediction System uses Machine Learning
-to predict whether a bank customer is likely to leave the bank.
+
+The Customer Churn Prediction System is a Machine Learning application that predicts whether a bank customer is likely to leave the bank.
+
+The system uses historical customer data to identify churn risk and displays prediction results through an interactive Streamlit web application.
 
 ## 2. Objectives
-- Predict customer churn.
+
+- Predict customer churn using Machine Learning.
 - Analyze customer information.
-- Display prediction probability.
-- Evaluate model performance.
-- Provide an interactive web application.
+- Display churn probability and risk levels.
+- Compare multiple Machine Learning algorithms.
+- Evaluate model performance using standard metrics.
+- Visualize customer data.
+- Allow users to upload and validate CSV datasets.
+- Download prediction results.
 
 ## 3. Technologies Used
+
 - Python
 - Pandas
 - NumPy
 - Scikit-learn
+- XGBoost
 - Streamlit
 - Joblib
+- Matplotlib
+- Unittest
 
 ## 4. Dataset
-Dataset: Churn_Modelling.csv
 
-Total Records: 10,000
+**Dataset:** Churn_Modelling.csv
 
-Target Column: Exited
+**Total Records:** 10,000
+
+**Target Column:** Exited
 
 - 0: Customer stayed
 - 1: Customer left
 
-Dataset Source:
+**Dataset Source:**
+
 https://www.kaggle.com/datasets/adammaus/predicting-churn-for-bank-customers
 
 ## 5. Data Preprocessing
+
+The following preprocessing steps are performed:
+
 - Removed unnecessary columns.
 - Removed duplicate records.
+- Created additional features.
 - Converted categorical features into numerical features.
 - Separated input features and target variable.
+- Aligned prediction input columns with the trained model.
 
-## 6. Machine Learning Algorithm
+## 6. Machine Learning Algorithms
 
-This project compares four machine learning algorithms:
+This project compares four Machine Learning algorithms:
 
-- Random Forest Classifier
-- Extra Trees Classifier
-- Gradient Boosting Classifier
-- XGBoost Classifier
+1. Random Forest Classifier
+2. Extra Trees Classifier
+3. Gradient Boosting Classifier
+4. XGBoost Classifier
 
-XGBoost was selected as the best-performing model based on test accuracy.
+XGBoost was selected as the best-performing model based on the measured test accuracy.
 
 ## 7. Model Evaluation
-Accuracy: 87.15%
-Precision: 80.24%
-Recall: 48.89%
-F1 Score: 60.76%
+
+The selected model achieved the following results:
+
+| Metric | Score |
+|---|---:|
+| Accuracy | 87.15% |
+| Precision | 80.24% |
+| Recall | 48.89% |
+| F1 Score | 60.76% |
 
 These are the measured results from the current test run.
 
+The model's recall indicates that some customers who actually leave may not be identified correctly.
+
 ## 8. Application Features
-- View customer dataset.
-- View dataset statistics.
-- Predict customer churn.
+
+### Dataset Management
+- View customer dataset records.
+- Display dataset statistics.
+- Upload customer data in CSV format.
+- Validate required columns and target values.
+- Detect missing values and invalid datasets.
+
+### Data Visualization
+- Customer churn distribution chart.
+- Customer distribution by geography.
+- Customer age distribution chart.
+
+### Churn Prediction
+- Predict whether a customer may leave.
 - Display churn probability.
-- Download customer dataset.
+- Classify churn risk as Low, Medium, or High.
 
-## 9. How to Run
+Risk categories:
+- Low Risk: Probability below 30%.
+- Medium Risk: Probability from 30% to below 60%.
+- High Risk: Probability of 60% or above.
 
-Install dependencies:
+These are application-defined probability thresholds, not guaranteed measures of actual customer behaviour.
 
+### Download Options
+- Download the customer dataset.
+- Download an individual customer's prediction result.
+
+## 9. Project Structure
+
+- `app.py` - Streamlit web application.
+- `preprocessing.py` - Data loading and preprocessing.
+- `train_model.py` - Model training and comparison.
+- `results.py` - Model evaluation results.
+- `test_project.py` - Automated tests.
+- `Churn_Modelling.csv` - Customer dataset.
+- `churn_model.pkl` - Trained Machine Learning model.
+- `model_columns.pkl` - Model input column definitions.
+- `model_evaluation_results.csv` - Model evaluation results.
+- `confusion_matrix.png` - Confusion matrix visualization.
+- `requirements.txt` - Python dependencies.
+
+## 10. Installation and Execution
+
+### Step 1: Install Dependencies
+
+```bash
 pip install -r requirements.txt
-
-Train the model:
-
-python train_model.py
-
-Run the application:
-
-streamlit run app.py
-
-## 10. Conclusion
-This project demonstrates how Machine Learning
-can help predict customer churn using historical
-customer data.
-
-## 11. Limitations
-
-- The model achieved 87.15% test accuracy.
-- Churn recall is 48.89%, so some customers who leave may not be identified.
-- Predictions are based on historical data and may not always be correct.
-- Model performance may change when applied to new customer data.
-
-## 12. Testing
-
-The project includes 10 automated tests covering dataset validation, target values, model availability, prediction functionality, and evaluation results.
