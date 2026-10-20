@@ -39,7 +39,15 @@ https://www.kaggle.com/datasets/adammaus/predicting-churn-for-bank-customers
 - Separated input features and target variable.
 
 ## 6. Machine Learning Algorithm
-Random Forest Classifier
+
+This project compares four machine learning algorithms:
+
+- Random Forest Classifier
+- Extra Trees Classifier
+- Gradient Boosting Classifier
+- XGBoost Classifier
+
+XGBoost was selected as the best-performing model based on test accuracy.
 
 ## 7. Model Evaluation
 Accuracy: 87.15%
@@ -74,3 +82,14 @@ streamlit run app.py
 This project demonstrates how Machine Learning
 can help predict customer churn using historical
 customer data.
+
+## 11. Limitations
+
+- The model achieved 87.15% test accuracy.
+- Churn recall is 48.89%, so some customers who leave may not be identified.
+- Predictions are based on historical data and may not always be correct.
+- Model performance may change when applied to new customer data.
+
+## 12. Testing
+
+The project includes 10 automated tests covering dataset validation, target values, model availability, prediction functionality, and evaluation results.
